@@ -6,7 +6,7 @@ import UserContext from "./contexts/UserContext";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Map from "./components/Map";
-import NewPost from "./components/NewPost";
+import Add from "./components/Add";
 
 function App() {
   const [user, setUser] = useState(
@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Map />} />
-          <Route path="add" element={<NewPost />} />
+          <Route path="/add" element={<Add />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
