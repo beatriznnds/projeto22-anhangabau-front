@@ -2,10 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 export default function SignUp() {
   const [data, setData] = useState({ email: "", name: "", password: "" });
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
   function signup(e) {
     e.preventDefault();
@@ -16,6 +19,7 @@ export default function SignUp() {
     });
     promise.then(() => {
       navigate("/");
+      setUser({ name: data.name });
     });
     promise.catch((err) => {
       console.log(err);
