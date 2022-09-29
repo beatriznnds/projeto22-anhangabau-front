@@ -42,3 +42,11 @@
   height: 100vh;
   z-index: 1;
 }
+
+.map-container {
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
