@@ -10,6 +10,8 @@ import UserContext from "../contexts/UserContext";
 import Info from "./Info";
 import Add from "./Add";
 import styled from "styled-components";
+import NewMarker from "./NewMarker";
+import { Link } from "react-router-dom";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -73,6 +75,9 @@ export default function Map() {
           </>
         ))}
       </MapContainer>
+      <Link to="/marker">
+        <NewMarker>+</NewMarker>
+      </Link>
     </>
   );
 }

@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Map from "./components/Map";
 import Add from "./components/Add";
+import NewMarker from "./components/NewMarker";
+import NewStreet from "./components/NewStreet";
 
 function App() {
   const [user, setUser] = useState(
@@ -22,6 +24,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Map />} />
           <Route path="/add" element={<Add />} />
+          <Route path="/marker" element={<NewMarker />} />
+          <Route path="/street" element={<NewStreet />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
