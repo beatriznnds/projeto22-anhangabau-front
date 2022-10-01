@@ -10,8 +10,7 @@ import UserContext from "../contexts/UserContext";
 import Info from "./Info";
 import Add from "./Add";
 import styled from "styled-components";
-
-import { Link } from "react-router-dom";
+import AddMarker from "./AddMarker";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -24,7 +23,6 @@ export default function Map() {
   const initialPosition = [-23.5446754, -46.6361352];
   const [positions, setPositions] = useState([]);
   const { user } = useContext(UserContext);
-  const [selectedPosition, setSelectedPosition] = useState([]);
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
@@ -42,23 +40,13 @@ export default function Map() {
     });
   }, []);
 
-  function handleMapClick(e) {
-    const { lat: latidude, lng: longitude } = e.latlng;
-    setSelectedPosition([latidude, longitude]);
-  }
-
   function open() {
     return setDisabled(false);
   }
 
   return (
     <Container>
-      <MapContainer
-        center={initialPosition}
-        zoom={60}
-        scrollWheelZoom={true}
-        onClick={handleMapClick}
-      >
+      <MapContainer center={initialPosition} zoom={60} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -71,16 +59,14 @@ export default function Map() {
                 {disabled ? (
                   <Button onClick={open}>+</Button>
                 ) : (
-                  <Add position={selectedPosition} street={p.street.id} />
+                  <Add street={p.street.id} />
                 )}
               </Popup>
             </Marker>
           </>
         ))}
+        <AddMarker />
       </MapContainer>
-      <Link to="/marker">
-        <h2>Adicione um novo marker!</h2>
-      </Link>
     </Container>
   );
 }

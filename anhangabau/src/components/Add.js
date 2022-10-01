@@ -11,7 +11,6 @@ export default function Add({ street }) {
   const navigate = useNavigate();
   console.log(street);
   function newPost(e) {
-    console.log(street);
     e.preventDefault();
     const promise = axios.post(
       "https://projeto22-anhangabau.herokuapp.com/info",
@@ -46,7 +45,6 @@ export default function Add({ street }) {
           />
         </div>
         <div>
-          {" "}
           <Button type="submit">
             <p>Salvar imagem</p>
           </Button>

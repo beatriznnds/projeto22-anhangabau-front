@@ -3,11 +3,21 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import styled from "styled-components";
 import axios from "axios";
+import Modal from "react-modal";
 
 export default function NewStreet() {
   const navigate = useNavigate();
   const [data, setData] = useState({ name: "" });
   const { user } = useContext(UserContext);
+  const [setModalIsOpen] = useState(false);
+
+  function openModal() {
+    setModalIsOpen(true);
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
+  }
 
   function sendStreet(e) {
     e.preventDefault();
@@ -19,12 +29,18 @@ export default function NewStreet() {
       { headers: { Authorization: `Bearer ${user.token}` } }
     );
     promise.then(() => {
-      navigate("/marker");
+      navigate("/home");
     });
   }
 
   return (
-    <Container>
+    <Modal
+      isOpen={openModal}
+      ariaHideApp={false}
+      onRequestClose={closeModal}
+      className="Modal"
+      overlayClassName="Overlay"
+    >
       <Form onSubmit={sendStreet}>
         <input
           type="text"
@@ -36,19 +52,9 @@ export default function NewStreet() {
           <p>Enviar novo endereço de rua</p>
         </Button>
       </Form>
-    </Container>
+    </Modal>
   );
 }
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: #9ec7ff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
 
 const Form = styled.form`
   display: flex;
