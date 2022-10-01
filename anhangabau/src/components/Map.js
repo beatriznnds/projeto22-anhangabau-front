@@ -10,7 +10,7 @@ import UserContext from "../contexts/UserContext";
 import Info from "./Info";
 import Add from "./Add";
 import styled from "styled-components";
-import NewMarker from "./NewMarker";
+
 import { Link } from "react-router-dom";
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -49,7 +49,7 @@ export default function Map() {
   }
 
   return (
-    <>
+    <Container>
       <MapContainer
         center={initialPosition}
         zoom={60}
@@ -76,12 +76,22 @@ export default function Map() {
         ))}
       </MapContainer>
       <Link to="/marker">
-        <NewMarker>+</NewMarker>
+        <h2>Adicione um novo marker!</h2>
       </Link>
-    </>
+    </Container>
   );
 }
 
 const Button = styled.button`
   z-index: 1;
+`;
+
+const Container = styled.div`
+  h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9ec7ff;
+    padding: 3px;
+  }
 `;

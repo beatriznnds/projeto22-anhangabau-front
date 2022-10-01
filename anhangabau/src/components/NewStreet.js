@@ -24,19 +24,44 @@ export default function NewStreet() {
   }
 
   return (
-    <Form onSubmit={sendStreet}>
-      <input
-        type="text"
-        required
-        value={data.name}
-        onChange={(e) => setData({ ...data, name: e.target.value })}
-      />
-      <Button type="submit">
-        <p>Enviar novo endereço de rua</p>
-      </Button>
-    </Form>
+    <Container>
+      <Form onSubmit={sendStreet}>
+        <input
+          type="text"
+          required
+          value={data.name}
+          onChange={(e) => setData({ ...data, name: e.target.value })}
+        />
+        <Button type="submit">
+          <p>Enviar novo endereço de rua</p>
+        </Button>
+      </Form>
+    </Container>
   );
 }
 
-const Form = styled.form``;
-const Button = styled.button``;
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: #9ec7ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    padding: 5px;
+    margin: 5px;
+  }
+`;
+const Button = styled.button`
+  width: 200px;
+  height: 30px;
+`;
