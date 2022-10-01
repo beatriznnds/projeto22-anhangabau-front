@@ -12,9 +12,12 @@ export default function NewMarker() {
   const [selectedStreet, setSelectedStreet] = useState("0");
 
   useEffect(() => {
-    const promise = axios.get("http://localhost:5001/streets", {
-      headers: { Authorization: `Bearer ${user.token}` },
-    });
+    const promise = axios.get(
+      "https://projeto22-anhangabau.herokuapp.com/streets",
+      {
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
     promise.then((res) => {
       setStreets(res.data);
     });
