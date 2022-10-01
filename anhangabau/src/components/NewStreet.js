@@ -12,7 +12,7 @@ export default function NewStreet() {
   function sendStreet(e) {
     e.preventDefault();
     const promise = axios.post(
-      "http://localhost:5001/streets",
+      "https://projeto22-anhangabau.herokuapp.com/streets",
       {
         name: data.name,
       },

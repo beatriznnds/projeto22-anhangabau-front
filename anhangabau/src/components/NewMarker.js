@@ -28,7 +28,7 @@ export default function NewMarker() {
     e.preventDefault();
     console.log(selectedStreet);
     const promise = axios.post(
-      "http://localhost:5001/coordinates",
+      "https://projeto22-anhangabau.herokuapp.com/coordinates",
       {
         latitude: data.latitude,
         longitude: data.longitude,

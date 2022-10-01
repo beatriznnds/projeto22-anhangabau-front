@@ -14,7 +14,7 @@ export default function Add({ street }) {
     console.log(street);
     e.preventDefault();
     const promise = axios.post(
-      "http://localhost:5001/info",
+      "https://projeto22-anhangabau.herokuapp.com/info",
       { imageUrl: post.imageUrl, caption: post.caption, streetId: street },
       { headers: { Authorization: `Bearer ${user.token}` } }
     );
@@ -29,30 +29,64 @@ export default function Add({ street }) {
   return (
     <Container>
       <Form onSubmit={newPost}>
-        <input
-          type="text"
-          placeholder="URL da imagem"
-          value={post.imageUrl}
-          required
-          onChange={(e) => setPost({ ...post, imageUrl: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Legenda da imagem"
-          value={post.caption}
-          required
-          onChange={(e) => setPost({ ...post, caption: e.target.value })}
-        />
-        <Button type="submit">
-          <p>Salvar imagem</p>
-        </Button>
+        <div>
+          <input
+            type="text"
+            placeholder="URL da imagem"
+            value={post.imageUrl}
+            required
+            onChange={(e) => setPost({ ...post, imageUrl: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Legenda da imagem"
+            value={post.caption}
+            required
+            onChange={(e) => setPost({ ...post, caption: e.target.value })}
+          />
+        </div>
+        <div>
+          {" "}
+          <Button type="submit">
+            <p>Salvar imagem</p>
+          </Button>
+        </div>
       </Form>
     </Container>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
-const Form = styled.form``;
+const Form = styled.form`
+  input {
+    width: 200px;
+    height: 30px;
+    margin: 5px;
+  }
+  &::placeholder {
+    margin: 10px;
+    padding-left: 10px;
+  }
+`;
 
-const Button = styled.button``;
+const Button = styled.button`
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+`;

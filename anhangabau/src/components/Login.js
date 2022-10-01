@@ -11,10 +11,13 @@ export default function Login() {
 
   function login(e) {
     e.preventDefault();
-    const promise = axios.post("http://localhost:5001/login", {
-      email: data.email,
-      password: data.password,
-    });
+    const promise = axios.post(
+      "https://projeto22-anhangabau.herokuapp.com/login",
+      {
+        email: data.email,
+        password: data.password,
+      }
+    );
     promise.then((res) => {
       const { token } = res.data;
       localStorage.setItem(

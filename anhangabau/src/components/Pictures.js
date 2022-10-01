@@ -24,7 +24,6 @@ export default function Pictures({ info }) {
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       slidesPerView={1}
       navigation
-      pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
     >
       <Swiper modules={[Virtual]} spaceBetween={50} slidesPerView={3} virtual>

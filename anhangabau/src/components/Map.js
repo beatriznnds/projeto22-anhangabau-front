@@ -28,9 +28,12 @@ export default function Map() {
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    const promise = axios.get("http://localhost:5001/coordinates", {
-      headers: { Authorization: `Bearer ${user.token}` },
-    });
+    const promise = axios.get(
+      "https://projeto22-anhangabau.herokuapp.com/coordinates",
+      {
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
     promise.then((res) => {
       setPositions(res.data);
     });
@@ -83,7 +86,18 @@ export default function Map() {
 }
 
 const Button = styled.button`
-  z-index: 1;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  color: white;
+  padding: 5px;
+  width: 40px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
 `;
 
 const Container = styled.div`
@@ -91,7 +105,6 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #9ec7ff;
     padding: 3px;
   }
 `;

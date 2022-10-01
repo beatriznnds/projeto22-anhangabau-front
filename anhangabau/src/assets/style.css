@@ -94,9 +94,35 @@ a {
   font-size: 12px;
   text-align: center;
   margin-top: 20px;
+  padding-bottom: 30px;
 }
 .custom-popup .leaflet-popup-tip {
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-top: 15px solid #2c3e50;
+}
+
+.swiper-pagination {
+  background-color: lightgray;
+  opacity: 1;
+}
+
+.swiper.slide {
+  background-color: lightgray;
+  opacity: 1;
+}
+
+.swiper-button-next {
+  --swiper-theme-color: black;
+  padding: 10px;
+  margin-left: 20px;
+}
+.swiper-button-prev {
+  --swiper-theme-color: black;
+  margin-right: 20px;
+}
+
+.swiper-pagination-bullet-active-next,
+.swiper-pagination-bullet-active-next-next {
+  background-color: white;
 }

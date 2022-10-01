@@ -12,11 +12,14 @@ export default function SignUp() {
 
   function signup(e) {
     e.preventDefault();
-    const promise = axios.post("http://localhost:5001/signup", {
-      email: data.email,
-      name: data.name,
-      password: data.password,
-    });
+    const promise = axios.post(
+      "https://projeto22-anhangabau.herokuapp.com/signup",
+      {
+        email: data.email,
+        name: data.name,
+        password: data.password,
+      }
+    );
     promise.then(() => {
       navigate("/");
       setUser({ name: data.name });

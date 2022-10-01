@@ -9,9 +9,12 @@ export default function Info({ street }) {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    const promise = axios.get(`http://localhost:5001/info/${street}`, {
-      headers: { Authorization: `Bearer ${user.token}` },
-    });
+    const promise = axios.get(
+      `https://projeto22-anhangabau.herokuapp.com/info/${street}`,
+      {
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
     promise.then((res) => {
       console.log(res.data);
       setInfo(res.data);
