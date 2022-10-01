@@ -1,25 +1,39 @@
 /* eslint-disable react/prop-types */
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import styled from "styled-components";
-export default function Pictures({
-  img,
-  caption,
-  author,
-  setCurrentPage,
-  pages,
-}) {
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
+import { Virtual } from "swiper";
+
+export default function Pictures({ info }) {
+  const slides = info.map((el) => (
+    <>
+      <img src={el.imageUrl} />
+      <a href={`${el.imageUrl}`}>
+        <h3>{el.caption}</h3>
+      </a>
+      <h4>Postado por {el.user.name}</h4>
+    </>
+  ));
   return (
-    <Container>
-      <IoIosArrowBack onClick={() => setCurrentPage(pages - 1)} />
-      <Info>
-        <img src={img} />
-        <h3>{caption}</h3>
-        <h4>Postado por {author}</h4>
-      </Info>
-      <IoIosArrowForward onClick={() => setCurrentPage(pages + 1)} />
-    </Container>
+    <Swiper
+      // install Swiper modules
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+    >
+      <Swiper modules={[Virtual]} spaceBetween={50} slidesPerView={3} virtual>
+        {slides.map((slideContent, index) => (
+          <SwiperSlide key={slideContent} virtualIndex={index}>
+            {slideContent}
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </Swiper>
   );
 }
-
-const Container = styled.div``;
-const Info = styled.div``;

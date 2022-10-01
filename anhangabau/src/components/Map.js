@@ -63,7 +63,7 @@ export default function Map() {
         {positions.map((p) => (
           <>
             <Marker position={[p.latitude, p.longitude]}>
-              <Popup>
+              <Popup className="custom-popup" id="map">
                 <Info street={p.street.id} />
                 {disabled ? (
                   <Button onClick={open}>+</Button>

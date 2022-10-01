@@ -7,12 +7,6 @@ import styled from "styled-components";
 export default function Info({ street }) {
   const [info, setInfo] = useState([]);
   const { user } = useContext(UserContext);
-  const [itensPerPage] = useState(1);
-  const [currentPage, setCurrentPage] = useState(0);
-  const pages = Math.ceil(info.length / itensPerPage);
-  const startIndex = currentPage * itensPerPage;
-  const endIndex = startIndex + itensPerPage;
-  const currentItens = info.slice(startIndex, endIndex);
 
   useEffect(() => {
     const promise = axios.get(`http://localhost:5001/info/${street}`, {
@@ -30,19 +24,10 @@ export default function Info({ street }) {
   return (
     <Container>
       <Item>
-        {currentItens.length > 0 ? (
-          currentItens.map((data, index) => (
-            <Pictures
-              key={index}
-              img={data.imageUrl}
-              caption={data.caption}
-              author={data.user.name}
-              setCurrentPage={setCurrentPage}
-              pages={pages}
-            />
-          ))
+        {info.length > 0 ? (
+          <Pictures info={info} />
         ) : (
-          <h2>Esse marker ainda não tem informações! </h2>
+          <h2>Ainda não há fotos dessa rua!</h2>
         )}
       </Item>
     </Container>
@@ -50,4 +35,8 @@ export default function Info({ street }) {
 }
 
 const Container = styled.div``;
-const Item = styled.div``;
+const Item = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
