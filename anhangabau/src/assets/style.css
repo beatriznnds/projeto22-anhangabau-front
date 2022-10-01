@@ -77,10 +77,9 @@ a {
 }
 
 .custom-popup img {
-  width: auto;
-  height: auto;
+  width: 270px;
+  height: 200px;
   margin-top: 50px;
-  margin-left: 35px;
   display: flex;
   align-items: center;
   justify-content: center;

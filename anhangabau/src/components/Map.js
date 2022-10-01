@@ -25,7 +25,7 @@ export default function Map() {
   const { user } = useContext(UserContext);
   const [disabled, setDisabled] = useState(true);
 
-  useEffect(() => {
+  function getMarkers() {
     const promise = axios.get(
       "https://projeto22-anhangabau.herokuapp.com/coordinates",
       {
@@ -38,7 +38,11 @@ export default function Map() {
     promise.catch(() => {
       alert("Algo deu errado! Tente novamente.");
     });
-  }, []);
+  }
+
+  useEffect(() => {
+    getMarkers();
+  }, [positions]);
 
   function open() {
     return setDisabled(false);

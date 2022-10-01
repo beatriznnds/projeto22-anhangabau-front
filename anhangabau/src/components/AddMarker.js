@@ -48,17 +48,13 @@ export default function AddMarker() {
   function handleSelectStreet(e) {
     setSelectedStreet(e.target.value);
   }
-  console.log(newMarker.lat);
-  console.log(newMarker.lng);
-  console.log(selectedStreet);
-
   function sendMarker(e) {
     e.preventDefault();
     const promise = axios.post(
-      "http://localhost:5001/coordinates",
+      "https://projeto22-anhangabau.herokuapp.com/coordinates",
       {
-        latitude: newMarker.lat,
-        longitude: newMarker.lng,
+        latitude: newMarker.lat.toFixed(4),
+        longitude: newMarker.lng.toFixed(4),
         streetName: selectedStreet,
       },
       { headers: { Authorization: `Bearer ${user.token}` } }

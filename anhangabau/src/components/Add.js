@@ -19,6 +19,7 @@ export default function Add({ street }) {
     );
     promise.then(() => {
       navigate("/home");
+      setPost({ imageUrl: "", caption: "" });
     });
     promise.catch(() => {
       alert("Algo deu errado! Tente novamente.");
