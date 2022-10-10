@@ -131,7 +131,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #333333;
+  background-color: gray;
   border: none;
   border-radius: 50px;
   width: 600px;

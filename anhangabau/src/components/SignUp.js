@@ -37,6 +37,7 @@ export default function SignUp() {
       </h1>
       <Form onSubmit={signup}>
         <input
+          data-cy="name-input"
           value={data.name}
           type="name"
           name="name"
@@ -45,6 +46,7 @@ export default function SignUp() {
           required
         />
         <input
+          data-cy="email-input"
           value={data.email}
           type="email"
           name="email"
@@ -53,6 +55,7 @@ export default function SignUp() {
           required
         />
         <input
+          data-cy="password-input"
           value={data.password}
           type="password"
           name="password"
@@ -60,7 +63,9 @@ export default function SignUp() {
           onChange={(e) => setData({ ...data, password: e.target.value })}
           required
         />
-        <Button type="submit">Cadastrar</Button>
+        <Button type="submit" data-cy="submit-button">
+          Cadastrar
+        </Button>
         <Link to="/">
           <p>Já tem uma conta? Entre agora!</p>
         </Link>

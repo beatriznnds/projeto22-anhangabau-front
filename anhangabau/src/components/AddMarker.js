@@ -30,9 +30,6 @@ export default function AddMarker() {
     setFormIsOpen(false);
   }
 
-  console.log(newMarker);
-  console.log(formIsOpen);
-
   useEffect(() => {
     const promise = axios.get(
       "https://projeto22-anhangabau.herokuapp.com/streets",
@@ -48,6 +45,7 @@ export default function AddMarker() {
   function handleSelectStreet(e) {
     setSelectedStreet(e.target.value);
   }
+
   function sendMarker(e) {
     e.preventDefault();
     const promise = axios.post(
@@ -68,7 +66,7 @@ export default function AddMarker() {
   }
 
   return (
-    <Container>
+    <>
       {formIsOpen ? (
         <Modal
           isOpen={openModal}
@@ -107,11 +105,9 @@ export default function AddMarker() {
       ) : (
         <></>
       )}
-    </Container>
+    </>
   );
 }
-
-const Container = styled.div``;
 
 const Form = styled.form`
   display: flex;
@@ -129,6 +125,9 @@ const Form = styled.form`
 const Button = styled.button`
   width: 200px;
   height: 30px;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
 `;
 
 const Part = styled.div`
